@@ -13,7 +13,7 @@ function App() {
               path={i.path}
               element={
                 <i.auth>
-                <i.component/>
+                  <i.component />  
                 </i.auth>
               }
             />
