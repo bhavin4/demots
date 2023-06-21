@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie";
 import { Navigate } from "react-router-dom";
 
 type Props = {
-  children: ReactNode;
+  children: ReactNode;  
 };
 
 const PublicRoutes = ({ children }: Props) => {
