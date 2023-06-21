@@ -7,13 +7,14 @@ type Props = {
 };
 
 const PublicRoutes = ({ children }: Props) => {
-  const [cookies, setCookies] = useCookies(["token"]);
+  const [cookies] = useCookies(["token"]);
+
   return (
     <>
       {!cookies.token ? (
         <>{children}</>
       ) : (
-        <Navigate to={"/LoginForm"} />
+        <Navigate to="/LoginForm" replace={true} />
       )}
     </>
   );

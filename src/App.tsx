@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { AppRoutes } from "./utils/Routs";
+import { AppRoutes } from "./utils/Routes";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
               path={i.path}
               element={
                 <i.auth>
-                  <i.component />  
+                <i.component/>
                 </i.auth>
               }
             />
