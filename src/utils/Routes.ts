@@ -1,4 +1,4 @@
-  import LoginForm from "../Pages/LoginForm"
+  import LoginForm from "../Components/Containers/LoginForm"
   import PublicRoutes from "../auth/PublicRouts"
   export const AppRoutes = [
   {
