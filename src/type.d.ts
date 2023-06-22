@@ -18,7 +18,6 @@ declare interface ForgetPasswordAPIRequest {
   email: string;
 }
 
-
 declare interface LoginAPIRequest {
   email: string;
   password: string;
@@ -30,3 +29,21 @@ declare interface PayloadType {
   success?: boolean;
   message?: string;
 }
+
+declare interface RegisterAdminResponse extends PayloadType {
+  user: {
+    full_name: string;
+    email: string;
+    user_type: "admin" | "user" | "coach";
+  };
+  token: string;
+  type: string;
+}
+
+declare interface RegisterAPIRequest {
+  name: string;
+  email: string;
+  password: string;
+  user_type: "admin" | "user" | "coach";
+}
+ter;
