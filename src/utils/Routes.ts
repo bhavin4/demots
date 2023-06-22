@@ -1,7 +1,7 @@
-  import LoginForm from "../Pages/LoginForm"
-  import RegestrationForm from "../Pages/RegestrationForm"
+  import LoginForm from "../components/LoginForm"
+  import RegestrationForm from "../components/RegestrationForm"
   import PublicRoutes from "../auth/PublicRouts"
-  import LoginPage from "../components/LoginPage";
+  import LoginPage from "../Pages/LoginPage";
   export const AppRoutes = [
   
     // {
