@@ -1,7 +1,7 @@
   import LoginForm from "../components/LoginForm"
-  import RegestrationForm from "../components/RegestrationForm"
   import PublicRoutes from "../auth/PublicRouts"
   import LoginPage from "../Pages/LoginPage";
+  import RegistrationPage from "../Pages/RegistrationPage";
   export const AppRoutes = [
   
     // {
@@ -12,9 +12,23 @@
     //   auth: PublicRoutes,
     // },
 
+    // {
+    //   id: "1",
+    //   path: "/",
+    //   name: "LoginPage",
+    //   component: LoginPage,
+    //   auth: PublicRoutes,
+    // },
     {
-      id: "0",
+      id: "1",
       path: "/",
+      name: "RegistrationPage",
+      component: RegistrationPage,
+      auth: PublicRoutes,
+    },
+    {
+      id: "2",
+      path: "/RegistrationPage/LoginPage",
       name: "LoginPage",
       component: LoginPage,
       auth: PublicRoutes,

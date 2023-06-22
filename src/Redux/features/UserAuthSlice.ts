@@ -1,9 +1,16 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axiosClient from "../../api/api";
 
-
-
-
+export const RegisterAdmin = createAsyncThunk<
+  RegisterAdminResponse,
+  RegisterAPIRequest
+>("UserAuth/register", async (data) => {
+  const res = await axiosClient.post<RegisterAdminResponse>(
+    "auth/register",
+    data
+  );
+  return res.data;
+});
 
 export const LoginAdmin = createAsyncThunk<LoginAdminResponse, LoginAPIRequest>(
   "UserAuth/Login",
@@ -39,12 +46,14 @@ export const ResetPasswordAPI = createAsyncThunk<any, PasswordRequest>(
 );
 
 interface UserAuthInitialState {
+  RegisterAdminIdle: "success" | "rejected" | "loading";
   LoginAdminIdle: "success" | "rejected" | "loading";
   ForgetPasswordAPIIdle: "success" | "rejected" | "loading";
   ResetPasswordAPIIdle: "success" | "rejected" | "loading";
 }
 
 const initialState: UserAuthInitialState = {
+  RegisterAdminIdle: "success",
   LoginAdminIdle: "success",
   ForgetPasswordAPIIdle: "success",
   ResetPasswordAPIIdle: "success",
@@ -56,6 +65,29 @@ const UserAuth = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
+      .addCase(RegisterAdmin.pending, (state, { payload }) => {
+        return {
+          ...state,
+          RegisterAdminIdle: "loading",
+        };
+      })
+      .addCase(
+        RegisterAdmin.fulfilled,
+        (state, action: PayloadAction<RegisterAdminResponse>) => {
+          console.log(action);
+          return {
+            ...state,
+            RegisterAdminIdle: "success",
+          };
+        }
+      )
+      .addCase(RegisterAdmin.rejected, (state, { payload }) => {
+        console.log("REJECT");
+        return {
+          ...state,
+          RegisterAdminIdle: "rejected",
+        };
+      })
       .addCase(LoginAdmin.pending, (state, { payload }) => {
         return {
           ...state,
