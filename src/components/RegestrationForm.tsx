@@ -1,97 +1,124 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import "../App.css";
+import InputComponent from "./InputComponent";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
+import ButtonComponent from "./ButtonComponent";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../Redux/app/Hooks";
+import { LoginAdmin } from "../Redux/features/UserAuthSlice";
+import { useCookies } from "react-cookie";
+
+
+type FormValues = {
+  name: string;
+  email: string;
+  password: string;
+};
 
 const RegistrationForm = () => {
+  const dipatch = useAppDispatch();
+  const [cookie, setCookie] = useCookies(["token"]);
+  const navigate = useNavigate();
+  const loading = useAppSelector((state) => state.UserAuth.LoginAdminIdle);
+
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required").label("Invalid name"),
+    email: Yup.string().required("Email is required").email("Invalid email"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(6, "Password must be at least 6 characters"),
+  });
+
   const {
     register,
+    watch,
     handleSubmit,
+    setError,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormValues>({
+    resolver: yupResolver(validationSchema),
+    defaultValues: { name: "", email: "", password: "" },
+  });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const formValues = watch();
+
+
+  const onSubmit = (data: FormValues) => {
+    if (data.email !== "" && data.password !== "") {
+      dipatch(
+        LoginAdmin({
+          email: data.email,
+          password: data.password,
+          user_type: "admin",
+        })
+      ).then((res) => {
+        if (LoginAdmin.fulfilled.match(res)) {
+          if (res.payload.success) {
+            setCookie("token", res.payload.token);
+            // navigate("/usermanagement/adminlist");
+          } else {
+            setError("email", { message: "please enter correct email" });
+            setError("password", { message: "please enter correct password" });
+          }
+        }
+      });
+    }
   };
-
-  return (  
+  return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="max-w-md w-full p-6 bg-white rounded-[12px] shadow-md">
-       <div className="text-center">
-       <h1 className="text-2xl font-bold text-[#1F3161]">Hi, Welcome back</h1>
-       <h3 className="text-base my-2 text-[#9E9E9E] font-normal">
-          Register Your Account
-        </h3>
-       </div>
-        <form  onSubmit={handleSubmit(onSubmit)}>
+      <div className="max-w-md w-full p-6 bg-white rounded-[12px]">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-[#1F3161]">
+            Hi, Welcome back
+          </h1>
+          <h3 className="text-base my-2 text-[#9E9E9E] font-normal">
+            Register Your Account
+          </h3>
+        </div>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="name"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              {...register("name", { required: true })}
-              className={`border rounded w-full py-2 px-3 text-gray-700 leading-tight ${
-                errors.name ? "border-red-500" : "border-gray-400"
-              }`}
+            <InputComponent
+              register={register}
+              inputRef="name"
+              errorname={errors.name?.message}
+              label="name"
+              name="name"
+              value={formValues.name}
             />
-            {errors.name && (
-              <p className="text-red-500 text-xs italic">Name is required</p>
-            )}
           </div>
           <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-              className={`border rounded w-full py-2 px-3 text-gray-700 leading-tight ${
-                errors.email ? "border-red-500" : "border-gray-400"
-              }`}
+            <InputComponent
+              register={register}
+              inputRef="email"
+              errorname={errors.email?.message}
+              label="Email"
+              name="email"
+              value={formValues.email}
             />
-            {errors.email && (
-              <p className="text-red-500 text-xs italic">
-                Please enter a valid email
-              </p>
-            )}
           </div>
           <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              {...register("password", { required: true })}
-              className={`border rounded w-full py-2 px-3 text-gray-700 leading-tight ${
-                errors.password ? "border-red-500" : "border-gray-400"
-              }`}
+            <InputComponent
+              register={register}
+              inputRef="password"
+              errorname={errors.password?.message}
+              label="Password"
+              name="password"
+              value={formValues.password}
             />
-            {errors.password && (
-              <p className="text-red-500 text-xs italic">
-                Password is required
-              </p>
-            )}
           </div>
-          <div className="flex items-center justify-end">
-            <button
-              type="submit"
-              className="bg-orange-400 w-full text-white font-bold py-2 px-4 rounded"
-            >
-              Register
-            </button>
+          <div className="flex gap-2 justify-between">
+            <div>
+              <label className="flex gap-2" htmlFor="label">
+                <input disabled name="label" type="checkbox" />
+                Remember Me
+              </label>
+            </div>
+            <Link to={"/LoginForm"}>Already Registered?</Link>
           </div>
+          <ButtonComponent loading={loading} CTA="Submit" varient="primary" />
         </form>
       </div>
     </div>
