@@ -25,7 +25,7 @@ const LoginForm = () => {
     handleSubmit,
   } = useForm<FormValues>({
     resolver: yupResolver(validationSchema),
-    defaultValues: { email: "", password: "" },
+    defaultValues: { email: "", password: "" }
   });
 
   const onSubmit = (data: FormValues) => {
@@ -49,7 +49,7 @@ const LoginForm = () => {
           register={register}
           inputRef="email"
           errorname={errors.email?.message}
-          label="email"
+          label="Email"
           name="email"
           value={formValues.email}
         />
@@ -58,7 +58,7 @@ const LoginForm = () => {
           register={register}
           inputRef="password"
           errorname={errors.password?.message}
-          label="password"
+          label="Password"
           name="password"
           value={formValues.password}
         />

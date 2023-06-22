@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import RegestrationForm from "../Components/RegestrationForm";
+import LoginForm from "../Components/LoginForm";
 
 type Props = {};
 
@@ -10,7 +11,8 @@ const LoginPage = (props: Props) => {
     <div className="box-border h-screen container  bg-secondary">
     <div className="grid grid-cols-1 lg:grid-cols-2 w-full h-screen  justify-between">
       <div className="col-span-1">
-        <RegestrationForm />
+        {/* <RegestrationForm /> */}
+        <LoginForm />
       </div>
       <div className="col-span-1 hidden lg:flex w-full h-screen">
         <img
