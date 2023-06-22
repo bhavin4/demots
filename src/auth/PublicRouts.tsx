@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie";
 import { Navigate } from "react-router-dom";
 
 type Props = {
-  children: ReactNode;  
+  children: ReactNode;
 };
 
 const PublicRoutes = ({ children }: Props) => {
@@ -14,7 +14,7 @@ const PublicRoutes = ({ children }: Props) => {
       {!cookies.token ? (
         <>{children}</>
       ) : (
-        <Navigate to="/RegestrationForm" replace={true} />
+        <Navigate to="/LoginForm" replace={true} />
       )}
     </>
   );

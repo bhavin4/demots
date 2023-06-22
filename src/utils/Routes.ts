@@ -1,4 +1,4 @@
-  import RegestrationForm from "../Pages/RegestrationForm"
+  // import RegestrationForm from "../Pages/RegestrationForm"
   import PublicRoutes from "../auth/PublicRouts"
   import LoginPage from "../Components/Containers/LoginForm";
 import LoginForm from "../Components/Containers/LoginForm";

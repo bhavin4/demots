@@ -13,7 +13,11 @@ function App() {
               path={i.path}
               element={
                 <i.auth>
+<<<<<<< HEAD
                   <i.component />  
+=======
+                <i.component/>
+>>>>>>> a3e30e0124db012405b23e0bf367d8f8af819a04
                 </i.auth>
               }
             />
