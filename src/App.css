@@ -11,8 +11,6 @@
 .input-container:focus-within label {
   transform: translate(0, 4px) scale(0.8);
   color: #909090;
-<<<<<<< HEAD
-=======
 }
 
 /* width */
@@ -35,5 +33,4 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
->>>>>>> 5535a0e3dd89b0505845664aea17c1f72bad9667
 }
