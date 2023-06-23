@@ -34,4 +34,12 @@
       auth: PublicRoutes,
     },
 
+    {
+      id: "2",
+      path: "/LoginPage/RegistrationPage",
+      name: "LoginPage",
+      component: LoginPage,
+      auth: PublicRoutes,
+    },
+
   ];

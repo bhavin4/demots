@@ -14,10 +14,10 @@ export const RegisterAdmin = createAsyncThunk<
 
 export const LoginAdmin = createAsyncThunk<LoginAdminResponse, LoginAPIRequest>(
   "UserAuth/Login",
-  async (LoginAPIRequest) => {
+  async (data) => {
     const res = await axiosClient.post<LoginAdminResponse>(
       "auth/login",
-      LoginAPIRequest
+      data
     );
     return res.data;
   }
@@ -89,6 +89,7 @@ const UserAuth = createSlice({
         };
       })
       .addCase(LoginAdmin.pending, (state, { payload }) => {
+
         return {
           ...state,
           LoginAdminIdle: "loading",
@@ -97,6 +98,8 @@ const UserAuth = createSlice({
       .addCase(
         LoginAdmin.fulfilled,
         (state, action: PayloadAction<LoginAdminResponse>) => {
+          console.log(action);
+
           return {
             ...state,
             LoginAdminIdle: "success",
@@ -104,6 +107,8 @@ const UserAuth = createSlice({
         }
       )
       .addCase(LoginAdmin.rejected, (state, { payload }) => {
+        console.log("REJECT");
+
         return {
           ...state,
           LoginAdminIdle: "rejected",

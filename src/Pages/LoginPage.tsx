@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import LoginForm from "../Components/LoginForm";
-
 type Props = {};
 
-const LoginPage = (props: Props) => {
+const RegistrationPage = (props: Props) => {
   const [first, setfirst] = useState("");
 
   return (
@@ -24,4 +23,4 @@ const LoginPage = (props: Props) => {
   );
 };
 
-export default LoginPage;
+export default RegistrationPage;

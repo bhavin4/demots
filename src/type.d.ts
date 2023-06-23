@@ -1,6 +1,5 @@
 declare interface LoginAdminResponse extends PayloadType {
   user: {
-    _id: string;
     full_name: string;
     email: string;
     user_type: "admin" | "user" | "coach";
