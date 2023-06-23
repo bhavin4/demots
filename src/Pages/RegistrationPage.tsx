@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RegestrationForm from "../components/RegestrationForm";
+import RegestrationForm from "../../src/Components/RegestrationForm";
 
 type Props = {};
 

@@ -4,7 +4,7 @@ import "../App.css";
 import InputComponent from "./InputComponent";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import ButtonComponent from "./ButtonComponent";
+import ButtonComponent from "../../src/Components/ButtonComponent";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../Redux/app/Hooks";
 import { RegisterAdmin } from "../Redux/features/UserAuthSlice";
