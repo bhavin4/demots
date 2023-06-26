@@ -46,22 +46,6 @@ const RegistrationForm = () => {
   const onSubmit = (data: FormValues) => {
     console.log(data);
     dispatch(RegisterAdmin({ ...data, user_type: "admin" }));
-    // RegisterAdmin({
-    //   email: data.email,
-    //   password: data.password,
-    //   name: data.name,
-    //   user_type:"admin"
-    // }).then((res) => {
-    //   if (RegisterAdmin.fulfilled.match(res)) {
-    //     if (res.payload.success) {
-    //       setCookie("token", res.payload.token);
-    //       // navigate("/usermanagement/adminlist");
-    //     } else {
-    //       setError("email", { message: "please enter correct email" });
-    //       setError("password", { message: "please enter correct password" });
-    //     }
-    //   }
-    // });
   };
 
   return (
