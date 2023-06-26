@@ -27,7 +27,7 @@ export const ForgetPasswordAPI = createAsyncThunk<
   any,
   ForgetPasswordAPIRequest
 >("UserAuth/ForgetPassword", async (data) => {
-  const res = await axiosClient.post("/auth/forgotpassword", data);
+  const res = await axiosClient.post("auth/forgotpassword", data);
   return res.data;
 });
 
@@ -36,6 +36,8 @@ type PasswordRequest = {
   password: string;
   confirm_password: string;
 };
+
+
 
 export const ResetPasswordAPI = createAsyncThunk<any, PasswordRequest>(
   "UserAuth/ResetPassword",

@@ -17,6 +17,12 @@ declare interface ForgetPasswordAPIRequest {
   email: string;
 }
 
+declare interface ResetPasswordAPIRequest {
+  email: string;
+  password: string;
+  user_id: "admin" | "user" | "coach";
+}
+
 declare interface LoginAPIRequest {
   email: string;
   password: string;
@@ -45,4 +51,9 @@ declare interface RegisterAPIRequest {
   password: string;
   user_type: "admin" | "user" | "coach";
 }
-ter;
+
+type PasswordRequest = {
+  user_id: string;
+  password: string;
+  confirm_password: string;
+};

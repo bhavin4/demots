@@ -2,11 +2,11 @@ import React from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputComponent from "./InputComponent";
 import ButtonComponent from "./ButtonComponent";
 import { useCookies } from "react-cookie";
-import { useAppSelector, useAppDispatch } from "../Redux/app/Hooks";
+import { useAppDispatch, useAppSelector } from "../Redux/app/hooks";
 import { LoginAdmin } from "../Redux/features/UserAuthSlice";
 
 type FormValues = {
@@ -78,6 +78,7 @@ const LoginForm = () => {
             </label>
           </div>
           <div>Forget Password?</div>
+          <Link to={"/forgetpassword"}>ForgetPassword?</Link>
         </div>
         <div>
           <ButtonComponent
