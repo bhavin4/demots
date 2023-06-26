@@ -14,7 +14,7 @@ const PublicRoutes = ({ children }: Props) => {
       {!cookies.token ? (
         <>{children}</>
       ) : (
-        <Navigate to="/LoginForm" replace={true} />
+        <Navigate to="/LoginPage" replace={true} />
       )}
     </>
   );

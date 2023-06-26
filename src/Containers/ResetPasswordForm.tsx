@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../Redux/app/hooks";
+import { useAppDispatch, useAppSelector } from "../Redux/app/Hooks";
 import { useCookies } from "react-cookie";
 import { LoginAdmin, ResetPasswordAPI } from "../Redux/features/UserAuthSlice";
 import { useState } from "react";

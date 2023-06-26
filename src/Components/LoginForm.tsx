@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import InputComponent from "./InputComponent";
 import ButtonComponent from "./ButtonComponent";
 import { useCookies } from "react-cookie";
-import { useAppDispatch, useAppSelector } from "../Redux/app/hooks";
+import { useAppDispatch, useAppSelector } from "../Redux/app/Hooks";
 import { LoginAdmin } from "../Redux/features/UserAuthSlice";
 
 type FormValues = {

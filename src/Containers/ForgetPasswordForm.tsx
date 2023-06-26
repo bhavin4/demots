@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import InputComponent from "../Components/InputComponent";
-import { useAppDispatch } from "../Redux/app/hooks";
+import { useAppDispatch } from "../Redux/app/Hooks";
 import { ForgetPasswordAPI } from "../Redux/features/UserAuthSlice";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { error } from "console";
