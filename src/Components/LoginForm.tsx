@@ -5,7 +5,6 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import InputComponent from "./InputComponent";
 import ButtonComponent from "./ButtonComponent";
-import { useCookies } from "react-cookie";
 import { useAppDispatch, useAppSelector } from "../Redux/app/Hooks";
 import { LoginAdmin } from "../Redux/features/UserAuthSlice";
 
@@ -15,7 +14,6 @@ type FormValues = {
 };
 
 const LoginForm = () => {
-  const [cookie, setCookie] = useCookies(["token"]);
   const navigate = useNavigate();
   const loading = useAppSelector((state) => state.UserAuth.LoginAdminIdle);
 
@@ -40,10 +38,12 @@ const LoginForm = () => {
   const dispatch = useAppDispatch();
   const onSubmit = (data: FormValues) => {
     console.log(data);
-    dispatch(LoginAdmin({ ...data, user_type: "admin" })).then(() => {setCookie("token", "token")
-    navigate("/LoginPage/Demo")
-  }) ;
+    dispatch(LoginAdmin({ ...data, user_type: "admin" })).then(() => {
+      localStorage.setItem("token", "token"); 
+      navigate("/LoginPage/Demo");
+    });
   };
+  
   return (
     <div className="w-[420px] m-auto h-[calc(100vh-88px)] flex flex-col justify-center items-center">
       <h1 className="text-2xl font-bold text-[#1F3161]">Hi, Welcome back</h1>
@@ -82,10 +82,7 @@ const LoginForm = () => {
           <Link to={"/forgetpassword"}>ForgetPassword?</Link>
         </div>
         <div>
-          <ButtonComponent
-            onClick={() => navigate("/")}
-            CTA="Submit"
-          />
+          <ButtonComponent onClick={() => navigate("/")} CTA="Submit" />
         </div>
       </form>
     </div>
