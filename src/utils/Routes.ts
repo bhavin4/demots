@@ -52,7 +52,7 @@ export const AppRoutes = [
   },
   {
     id: "4",
-    path: "/resetpassword",
+    path: "/resetpassword/:hashedID",
     name: "login",
     component: ResetPasswordPage,
     auth: PublicRoutes,

@@ -36,11 +36,15 @@ const ForgetPasswordForm = (props: Props) => {
   const onSubmit = (data: FormValues) => {
     dispatch(ForgetPasswordAPI({ email: data.email })).then(
       (res: PayloadAction<any>) => {
-        !res.payload?.success
+       res.payload?.success
           ? setError("email", { message: "Invalid User" })
           : setView(true);
       }
     );
+  };
+
+  const handleBack = () => {
+    navigate("/");
   };
 
   return (
@@ -86,8 +90,9 @@ const ForgetPasswordForm = (props: Props) => {
             <ButtonComponent
               CTA="Back"
               varient="primary"
-              onClick={() => navigate("/")}
-            />
+              onClick={handleBack}
+              />
+              
           </>
         )}
       </div>
