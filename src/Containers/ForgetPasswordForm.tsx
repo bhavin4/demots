@@ -48,9 +48,9 @@ const ForgetPasswordForm = (props: Props) => {
       <div className="bg-white text-center w-full m-auto py-4">
         {!view ? (
           <>
-            <h1 className="text-2xl  font-bold text-[#1F3161]">
+            {/* <h1 className="text-2xl  font-bold text-[#1F3161]">
               Forgot password?
-            </h1>
+            </h1> */}
             <h3 className="text-base text-center my-2 text-[#9E9E9E] font-normal">
               Enter your email address below and we'll send you password reset
               OTP.
