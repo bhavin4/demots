@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import { useCookies } from "react-cookie";
 import { Navigate } from "react-router-dom";
 
 type Props = {
@@ -7,18 +6,17 @@ type Props = {
 };
 
 const PublicRoutes = ({ children }: Props) => {
-  const [cookies] = useCookies(["token"]);
+  const token = localStorage.getItem("token");
 
   return (
     <>
-      {!cookies.token ? (
+      {!token ? (
         <>{children}</>
       ) : (
-        <Navigate to={"/LoginPage/Demo"} />
+        <Navigate to="/LoginPage/Demo" replace={true} />
       )}
     </>
   );
 };
 
 export default PublicRoutes;
-

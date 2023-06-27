@@ -1,4 +1,3 @@
-// import LoginForm from "../components/LoginForm"
 import PublicRoutes from "../auth/PublicRouts";
 import LoginPage from "../Pages/LoginPage";
 import RegistrationPage from "../Pages/RegistrationPage";
@@ -7,13 +6,7 @@ import ResetPasswordPage from "../Pages/ResetPasswordPage";
 import AdminRoutes from "../auth/AdminRoutes";
 import Demo from "../Pages/Demo";
 export const AppRoutes = [
-  // {
-  //   id: "0",
-  //   path: "/",
-  //   name: "loginForm",
-  //   component: LoginForm,
-  //   auth: PublicRoutes,
-  // },
+
 
   {
     id: "0",
@@ -60,4 +53,5 @@ export const AppRoutes = [
     component: Demo,
     auth: AdminRoutes,
   },
+
 ];

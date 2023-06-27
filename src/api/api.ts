@@ -16,8 +16,7 @@ axiosClient.interceptors.response.use(
   async function (error) {
     let res = error.response;
     if (res.status === 401) {
-      const cookies = new Cookies();
-      cookies.remove("token");
+      localStorage.removeItem("token"); 
       window.location.href = "/";
     }
   }
@@ -26,8 +25,7 @@ axiosClient.interceptors.response.use(
 axiosClient.interceptors.request.use(
   function (request) {
     if (request.url !== "auth/login") {
-      let cookie = new Cookies();
-      const token = cookie.get("token");
+      const token = localStorage.getItem("token"); 
       request.headers.Authorization = `Bearer ${token}`;
     }
     return request;
@@ -36,5 +34,6 @@ axiosClient.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
 
 export default axiosClient;
