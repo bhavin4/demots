@@ -2,7 +2,6 @@
 import PublicRoutes from "../auth/PublicRouts";
 import LoginPage from "../Pages/LoginPage";
 import RegistrationPage from "../Pages/RegistrationPage";
-import LoginForm from "../Components/LoginForm";
 import ForgetPasswordPage from "../Pages/ForgetPasswordPage";
 import ResetPasswordPage from "../Pages/ResetPasswordPage";
 export const AppRoutes = [
@@ -14,13 +13,13 @@ export const AppRoutes = [
   //   auth: PublicRoutes,
   // },
 
-  // {
-  //   id: "1",
-  //   path: "/",
-  //   name: "LoginPage",
-  //   component: LoginPage,
-  //   auth: PublicRoutes,
-  // },
+  {
+    id: "0",
+    path: "/",
+    name: "LoginPage",
+    component: LoginPage,
+    auth: PublicRoutes,
+  },
   {
     id: "1",
     path: "/",

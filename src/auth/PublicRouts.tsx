@@ -1,5 +1,4 @@
-import React, { ReactNode } from "react";
-import { useCookies } from "react-cookie";
+import React, { ReactNode, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
 type Props = {
@@ -7,17 +6,16 @@ type Props = {
 };
 
 const PublicRoutes = ({ children }: Props) => {
-  const [cookies] = useCookies(["token"]);
+  useEffect(() => {
+    // Check if the token exists in local storage
+    const token = localStorage.getItem("token");
+    if (token) {
+      // If the token exists, redirect to the login page
+      window.location.href = "/LoginPage";
+    }
+  }, []);
 
-  return (
-    <>
-      {!cookies.token ? (
-        <>{children}</>
-      ) : (
-        <Navigate to="/LoginForm" replace={true} />
-      )}
-    </>
-  );
+  return <>{children}</>;
 };
 
 export default PublicRoutes;
