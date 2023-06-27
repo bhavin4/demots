@@ -4,6 +4,8 @@ import LoginPage from "../Pages/LoginPage";
 import RegistrationPage from "../Pages/RegistrationPage";
 import ForgetPasswordPage from "../Pages/ForgetPasswordPage";
 import ResetPasswordPage from "../Pages/ResetPasswordPage";
+import AdminRoutes from "../auth/AdminRoutes";
+import Demo from "../Pages/Demo";
 export const AppRoutes = [
   // {
   //   id: "0",
@@ -20,6 +22,7 @@ export const AppRoutes = [
     component: LoginPage,
     auth: PublicRoutes,
   },
+  
   {
     id: "1",
     path: "/",
@@ -27,21 +30,14 @@ export const AppRoutes = [
     component: RegistrationPage,
     auth: PublicRoutes,
   },
-  {
-    id: "2",
-    path: "/RegistrationPage/LoginPage",
-    name: "LoginPage",
-    component: LoginPage,
-    auth: PublicRoutes,
-  },
 
-  {
-    id: "2",
-    path: "/LoginPage/RegistrationPage",
-    name: "LoginPage",
-    component: LoginPage,
-    auth: PublicRoutes,
-  },
+  // {
+  //   id: "2",
+  //   path: "/LoginPage/RegistrationPage",
+  //   name: "LoginPage",
+  //   component: LoginPage,
+  //   auth: PublicRoutes,
+  // },
   {
     id: "3",
     path: "/forgetpassword",
@@ -55,5 +51,13 @@ export const AppRoutes = [
     name: "login",
     component: ResetPasswordPage,
     auth: PublicRoutes,
+  },
+
+  {
+    id: "4",
+    path: "/LoginPage/Demo",
+    name: "Demo",
+    component: Demo,
+    auth: AdminRoutes,
   },
 ];

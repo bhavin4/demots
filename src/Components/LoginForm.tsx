@@ -40,7 +40,9 @@ const LoginForm = () => {
   const dispatch = useAppDispatch();
   const onSubmit = (data: FormValues) => {
     console.log(data);
-    dispatch(LoginAdmin({ ...data, user_type: "admin" }));
+    dispatch(LoginAdmin({ ...data, user_type: "admin" })).then(() => {setCookie("token", "token")
+    navigate("/LoginPage/Demo")
+  }) ;
   };
   return (
     <div className="w-[420px] m-auto h-[calc(100vh-88px)] flex flex-col justify-center items-center">
@@ -81,7 +83,7 @@ const LoginForm = () => {
         </div>
         <div>
           <ButtonComponent
-            onClick={() => navigate("/LoginPage/RegistrationPage")}
+            onClick={() => navigate("/")}
             CTA="Submit"
           />
         </div>

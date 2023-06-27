@@ -6,19 +6,21 @@ type Props = {
   children: ReactNode;
 };
 
-const PublicRoutes = ({ children }: Props) => {
+const AdminRoutes = ({ children }: Props) => {
   const [cookies] = useCookies(["token"]);
+  const token = cookies.token;
 
   return (
     <>
-      {!cookies.token ? (
-        <>{children}</>
+      {cookies.token ? (
+        <>
+          {children}
+        </>
       ) : (
-        <Navigate to={"/LoginPage/Demo"} />
+        <Navigate to="/"/>
       )}
     </>
   );
 };
 
-export default PublicRoutes;
-
+export default AdminRoutes;
